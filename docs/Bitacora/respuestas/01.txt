@@ -1,0 +1,4 @@
+{
+  "answer": "\n\n¡Claro! Te explico de forma sencilla qué es una API REST.\n\n### ¿Qué es una API?\n\nImagina que tu smartphone es un cliente y un restaurante es un servicio (como una aplicación web). Para pedir comida, no vas a la cocina directamente. Le haces un pedido a un **camarero**. Este camarero es la **API (Interfaz de Programación de Aplicaciones)**. Es el intermediario",
+  "model": "openrouter/free"
+}
