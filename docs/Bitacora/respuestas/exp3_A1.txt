@@ -1,0 +1,16 @@
+Modelo: dots-studio/dots-3-note-preview:free | T 0.3 | top_p 1.0 | max_tokens 400 | 200 | 8.02 s | 717 bytes
+(Transcrito de la captura de Thunder Client. La respuesta termina cortada.)
+
+¡Claro! Te explico FastAPI de forma sencilla.
+
+### ¿Qué es FastAPI?
+
+FastAPI es un **framework moderno y rápido** para construir APIs web en Python. Piensa en él como una herramienta que te permite crear servicios web (APIs) de manera muy eficiente y con poco código.
+
+Una analogía: Si construir una API con otras herramientas es como hacer una casa ladrillo por ladrillo, con FastAPI es como usar bloques prefabricados: es más rápido, más ordenado y el resultado es muy profesional.
+
+---
+
+### Tres Ventajas Reales de FastAPI
+
+1. **Velocidad:** Es uno de los frameworks más rápidos para APIs en Python, comparable a Node.js o Go

@@ -1,0 +1,38 @@
+Modelo: dots-studio/dots-3-note-preview:free | T 0.3 | top_p 1.0 | max_tokens 400 | 200 | 7.38 s | 1.6 KB
+(Transcrito de la captura de Thunder Client. El inicio de la respuesta no es visible en la captura porque el panel estaba desplazado; el final termina cortado.)
+
+[...] OpenAPI y JSON Schema.
+
+"Imagina que es un constructor de páginas web que recibe peticiones y devuelve respuestas, pero optimizado para rendimiento y simplicidad.
+
+---
+
+## 3 Ventajas Reales de FastAPI
+
+### 1. **Rendimiento Ultra Rápido**
+FastAPI es uno de los frameworks más rápidos de Python, comparable a Node.js y Go. Esto significa que tu API responderá más rápido incluso con muchos usuarios.
+
+### 2. **Documentación Automática**
+Genera documentación interactiva (Swagger UI y ReDoc) automáticamente. ¡Necesitas escribir muy poca código y ya tienes una página para probar tu API!
+
+### 3. **Validación de Datos Integrada**
+Usa Pydantic para verificar que los datos que recibe tu API sean correctos. Si un usuario envía un email mal formado, FastAPI lo detecta automáticamente y responde con un error claro.
+
+---
+
+## Ejemplo Sencillo de Endpoint
+
+Aquí tienes un código básico que crea una API con un endpoint:
+
+```python
+# Instalar primero: pip install fastapi uvicorn
+from fastapi import FastAPI
+
+# Crear la aplicación FastAPI
+app = FastAPI()
+
+# Definir un endpoint (route)
+@app.get("/")
+async def read_root():
+    """Endpoint raíz que devuelve un mensaje de bienvenida"""
+    return {"message": "¡Hola,"

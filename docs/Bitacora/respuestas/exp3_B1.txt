@@ -1,0 +1,33 @@
+Modelo: poolside/laguna-s-2.1:free | T 0.3 | top_p 1.0 | max_tokens 400 | 200 | 10.18 s | 1.48 KB
+(Transcrito de la captura de Thunder Client. La respuesta termina cortada dentro del código.)
+
+## ¿Qué es FastAPI?
+
+FastAPI es un **framework de código abierto** para construir APIs (Interfaces de Programación de Aplicaciones) con Python. Fue creado por Sebastián Ramírez y está diseñado para ser **rápido**, **fácil de usar** y **altamente productivo**, todo sin sacrificar funcionalidad.
+
+Utiliza las últimas características de Python como **type hints** (anotaciones de tipos) y **async/await** para ofrecer un rendimiento cercano al de frameworks como Node.js o Go, según pruebas de rendimiento oficiales.
+
+---
+
+## Tres ventajas reales de FastAPI
+
+1. **Alta velocidad de desarrollo**
+   Con muy poco código puedes tener una API funcional. FastAPI genera automáticamente la documentación interactiva (Swagger UI y ReDoc) solo con definir tus endpoints.
+
+2. **Rendimiento excelente**
+   Gracias al soporte de `async/await` y a estar construido sobre **Starlette** (para el manejo de rutas) y **Pydantic** (para validación de datos), FastAPI ofrece un rendimiento muy cercano al de lenguajes compilados como Go o Rust.
+
+3. **Validación automática de datos con Pydantic**
+   Si envías datos incorrectos a un endpoint (por ejemplo, un string donde se espera un número), FastAPI te devuelve un error claro automáticamente, sin que tengas que escribir código extra para validar.
+
+---
+
+## Ejemplo sencillo de endpoint
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():

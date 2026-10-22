@@ -1,0 +1,8 @@
+Modelo: dots-studio/dots-3-note-preview:free | T 0.3 | top_p 1.0 | max_tokens 400 | 200 | 7.85 s | 374 bytes
+(Transcrito de la captura de Thunder Client. La respuesta termina cortada.)
+
+¡Claro! Te explico de forma sencilla qué es FastAPI y cómo funciona.
+
+## ¿Qué es FastAPI?
+
+**FastAPI es un marco moderno y rápido para construir APIs en Python.** Es como un "constructor de páginas web" que te permite crear servicios que pueden compartir datos con otras aplicaciones (por ejemplo,
