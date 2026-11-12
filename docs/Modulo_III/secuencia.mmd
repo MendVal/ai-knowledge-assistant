@@ -1,0 +1,33 @@
+sequenceDiagram
+    autonumber
+    actor C as Cliente (Swagger /docs)
+    participant R as api/routes/agent.py
+    participant S as schemas/agent.py
+    participant A as services/agent_service.py
+    participant G as tools/registry.py
+    participant P as providers/openrouter.py
+    participant L as OpenRouter (LLM)
+    participant V as tools/schemas.py (EffortArgs)
+    participant F as tools/functions.py
+
+    C->>R: POST /api/v1/agent/chat {question, max_steps...}
+    R->>S: valida AgentChatRequest (422 si falla)
+    R->>A: Depends(get_agent_service) -> ask(question, ...)
+    A->>G: tool_definitions()
+    G-->>A: catálogo (incluye estimate_learning_effort)
+    A->>P: complete_with_tools(messages, tools)
+    P->>L: HTTP POST /chat/completions + tools
+    L-->>P: tool_call estimate_learning_effort {difficulty, topics, weekly_hours}
+    P-->>A: mensaje con tool_calls
+    A->>G: execute_tool(name, arguments, confirm_actions)
+    G->>V: EffortArgs.model_validate(args)
+    V-->>G: argumentos válidos (o invalid_arguments)
+    G->>F: estimate_learning_effort(args)
+    F-->>G: {total_hours, weeks, effort_level, explanation}
+    G-->>A: {"ok": true, "data": {...}}
+    A->>P: complete_with_tools(messages + role=tool)
+    P->>L: HTTP POST con el resultado de la herramienta
+    L-->>P: texto final
+    P-->>A: content
+    A-->>R: AgentResult(answer, tools_used)
+    R-->>C: 200 {answer, model, tools_used}
