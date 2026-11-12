@@ -1,0 +1,1 @@
+{"answer":"\n\nSi estudias 2 horas diarias durante 5 días, el total serían **10 horas** de estudio.","model":"dots-studio/dots-3-note-preview:free","tools_used":["calculate_study_hours"]}
