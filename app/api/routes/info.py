@@ -18,5 +18,5 @@ async def info() -> InfoResponse:
         name="AI Knowledge Assistant",
         version="0.1.0",
         environment="development",
-        llm_enabled=False,
+        llm_enabled=True,
     )

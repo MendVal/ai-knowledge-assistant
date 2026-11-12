@@ -46,7 +46,7 @@ async def test_info() -> None:
         response = await client.get("/api/v1/info")
 
     assert response.status_code == 200
-    assert response.json()["llm_enabled"] is False
+    assert response.json()["llm_enabled"] is True
 
 
 @pytest.mark.asyncio
