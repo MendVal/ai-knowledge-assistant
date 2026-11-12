@@ -81,3 +81,44 @@ async def test_generate_response_without_choices(
         await make_provider().generate(MESSAGES)
 
     assert "inválido" in str(error.value)
+
+async def test_complete_with_tools_envia_tools_y_devuelve_mensaje(mock_openrouter):
+    import json
+
+    import httpx
+
+    from app.providers.openrouter import OpenRouterProvider
+
+    seen = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["payload"] = json.loads(request.content)
+        return httpx.Response(200, json={"choices": [{"message": {
+            "content": None,
+            "tool_calls": [{"id": "c1", "type": "function",
+                            "function": {"name": "x", "arguments": "{}"}}],
+        }}]})
+
+    mock_openrouter(handler)
+    provider = OpenRouterProvider("k", "m", "https://example.test/api/v1")
+    msg = await provider.complete_with_tools(
+        messages=[{"role": "user", "content": "hola"}],
+        tools=[{"type": "function", "function": {"name": "x"}}],
+    )
+
+    assert seen["payload"]["tool_choice"] == "auto"
+    assert seen["payload"]["tools"][0]["function"]["name"] == "x"
+    assert msg["tool_calls"][0]["id"] == "c1"
+
+
+async def test_generate_conserva_su_contrato_con_el_refactor(mock_openrouter):
+    import httpx
+
+    from app.providers.openrouter import OpenRouterProvider
+
+    mock_openrouter(lambda request: httpx.Response(
+        200, json={"choices": [{"message": {"content": "respuesta del modelo"}}]}
+    ))
+    provider = OpenRouterProvider("k", "m", "https://example.test/api/v1")
+    answer = await provider.generate([{"role": "user", "content": "Hola"}])
+    assert answer == "respuesta del modelo"
